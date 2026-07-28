@@ -8,5 +8,8 @@ public class Driver {
 		list.add(7);
 		list.add(9);
 		list.printList();
+		list.remove(9);
+		System.out.println("\n");
+		list.printList();
 	}
 }

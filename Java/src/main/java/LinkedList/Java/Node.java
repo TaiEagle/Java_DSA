@@ -6,7 +6,7 @@ public class Node {
 	
 	//Default Constructor
 	public Node() {
-		
+		//sets data to 0  by default 
 	}
 	
 	
