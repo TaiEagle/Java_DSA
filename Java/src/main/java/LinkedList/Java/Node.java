@@ -1,3 +1,8 @@
+/*Creator: Dakota Osborne
+ * Date: 08/03/2026
+ * This class contains functionality to implement a Node object inside a singly Linked List
+ * 
+ * */
 package LinkedList.Java;
 
 public class Node {

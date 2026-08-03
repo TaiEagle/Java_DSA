@@ -1,3 +1,11 @@
+/*Creator: Dakota Osborne
+ * Date: 08/03/2026
+ * This class contains functionality to implement a singly Linked List
+ * 
+ * */
+
+
+
 package LinkedList.Java;
 
 public class LinkedList {
@@ -50,7 +58,8 @@ public class LinkedList {
 			while(currNode != null) {
 				//check if Node equals the parameter 
 				if(currNode.data == data) {
-					return firstNode;
+					return currNode;
+					//return firstNode;
 					
 				}
 				//if it is not the node, set it to the next node
@@ -64,57 +73,74 @@ public class LinkedList {
 		return node;
 	}
 	
-	//TODO fix infinite loop
+
+	
+	
+	
+	
+	
+	
+	
+	
+//This method searches for the node to remove
+//Parameter 1: data --- int
+//This method returns a node
 	public Node removeSearch(int data) {
-		//empty node
-		Node node = null;
-		Node currNode = head;
-		
-		//if the list is empty
-		if(currNode == null) {
-			return node;
-			
-		}
-		//if it is not empty, search for node
-		else {
-			//while the next node is not null
-			while(currNode.NextNode != null) {
-				//if the next node is a match
-				if(currNode.NextNode.data == data) {
-					return currNode;
-				}
+		//start at the head dummy node
+		Node currNode = this.head.NextNode;
+		Node prevNode = this.head;
+		//if the next node is empty return null
+		while(currNode != null) {
+			//if the next node is a match
+			if(currNode.data == data) {
+				return prevNode;
+			}
+			else {
+				currNode = currNode.NextNode;
+				prevNode = prevNode.NextNode;
 			}
 		}
 		
-		return node;
+		
+		return null;
 		
 	}
 	
 	
-	
-	/*This method removes the first node from the Linked List that contains the specified data
-	 * Parameter 1: data --- int
-	 * Returns nothing
-	 * */
+//This method removes a item from the list
+//Parameter 1: data --- int
+//This method returns nothing
 	public void remove(int data) {
-		//currNode contains the list item BEFORE the list item that will be removed
-		Node currNode = removeSearch(data);
+		Node removeNode = removeSearch(data);
+		//if the list does not contain the desired element
+		if(removeNode == null) {
+			return;
+		}
 		
-		//if it is the first node after the dummy node
-		if(this.head.NextNode.data == data) {
-			this.head.NextNode = currNode.NextNode.NextNode;
+		//if it is the head (Not the dummy node)
+		if(removeNode.NextNode == this.head.NextNode) {
+			//point past first node to remove the first node
+			this.head.NextNode = removeNode.NextNode.NextNode;
 		}
-		//TODO: does not work --- infinite loop
-		//if the next node is the tail
-		else if(currNode.NextNode.data == this.tail.data) {
-			currNode.NextNode = null;
-			tail = currNode;
+		//if it is the tail node
+		else if(removeNode.NextNode == this.tail) {
+			//point to null
+			removeNode.NextNode = null;
+			//set new tail
+			this.tail = removeNode;
 		}
-		// else set current node to next nodes next node
+		//if it is in the middle of the list 
 		else {
-			currNode.NextNode = currNode.NextNode.NextNode;
+			removeNode.NextNode = removeNode.NextNode.NextNode;
 		}
+		
+		
+		
 	}
+	
+	
+	
+	
 	
 	/*This method prints out the whole list 
 	 * 
@@ -138,4 +164,43 @@ public class LinkedList {
 		
 	}
 	
+	
+	
+	//This method inserts a new Node object in between two specified nodes 
+	public void insert(int firstNodeData, int secondNodeData, int newNodeData) {
+		//first node object
+		Node firstNode = search(firstNodeData);
+		//second node object
+		Node secondNode = search(secondNodeData);
+		
+		
+		//if they are subsequent nodes conduct the insert 
+		if(firstNode.NextNode == secondNode) {
+			//create new node object 
+			Node newNode = new Node(newNodeData);
+			
+			firstNode.NextNode = newNode;
+			newNode.NextNode = secondNode;
+			
+		}
+		//else do nothing
+		else {
+			return;
+		}
+		
+		
+
+		
+	}
+	
+	
+	
 }
+
+
+
+
+
+
+
+
