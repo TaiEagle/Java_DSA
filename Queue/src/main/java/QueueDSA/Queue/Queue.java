@@ -1,15 +1,15 @@
 package QueueDSA.Queue;
 
 import java.util.ArrayList;
-public class Queue {
-	Node head;
-	Node tail;
+public class Queue <type>{
+	Node<?> head;
+	Node<?> tail;
 	
 	
 	//Constructor 
 	public Queue() {
 		//create dummy node 
-		Node node = new Node();
+		Node<type> node = new Node<>();
 		//set as head node
 		this.head = node;
 		
@@ -17,11 +17,11 @@ public class Queue {
 	
 	
 	//This method adds a node to the end of the queue 
-	//Parameter 1: int --- data
-	//Returns nothings 
-	public void push(int data) {
+	//Parameter 1: generic type --- data
+	//Returns nothing 
+	public void push(type data) {
 		//Create node
-		Node node = new Node(data);
+		Node<type> node = new Node<>((type)data);
 		
 		//if the queue is empty
 		if(this.head.nextNode == null) {
@@ -37,10 +37,11 @@ public class Queue {
 	
 	
 	//This method removes the first instance in the queue and returns its data
-	//Returns an integer 
-	public int pop() {
-		int returnData = -1;
-		Node returnNode = null;
+	//Returns an object with type passed by generic 
+	@SuppressWarnings("unchecked")
+	public type pop() {
+		type returnData = null;
+		Node<?> returnNode = null;
 		
 		//if the queue is not empty 
 		if(this.head.nextNode != null) {
@@ -50,7 +51,7 @@ public class Queue {
 		}
 		if(returnNode != null) {
 			//get the data to return 
-			returnData = returnNode.data;
+			returnData = (type) returnNode.data;
 		}
 		
 		
@@ -58,16 +59,38 @@ public class Queue {
 		return returnData; 
 		
 	}
+	//This method returns the first nodes data
+	//Returns the generic type 
+	
+	@SuppressWarnings("unchecked")
+	public type peek() {
+		type data;
+		Node<?> nodeData = this.head.nextNode;
+		data = (type) nodeData.data;
+		
+		
+		
+		
+		return data;
+		
+		
+	}
 	
 	
-	public ArrayList<Integer> printAll() {
-		Node currNode = this.head.nextNode;
-		ArrayList<Integer> testList = new ArrayList<>();
+	
+	
+	//This method is used for testing and converts the queue into a matching array list 
+	//returns an array list
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<type> printAll() {
+		Node<?> currNode = this.head.nextNode;
+		ArrayList<type> testList = new ArrayList<>();
 		
 		
 		while(currNode != null) {
 			System.out.println(currNode.data);
-			testList.add(currNode.data);
+			testList.add((type)currNode.data);
 			currNode = currNode.nextNode;
 			
 			

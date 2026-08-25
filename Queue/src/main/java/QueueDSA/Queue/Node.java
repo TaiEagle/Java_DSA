@@ -1,10 +1,10 @@
 package QueueDSA.Queue;
 
-public class Node {
+public class Node<type> {
 
 	
-	Node nextNode = null;
-	int data;
+	Node<?> nextNode = null;
+	type data;
 	
 	//Constructor 
 	public Node() {
@@ -12,7 +12,7 @@ public class Node {
 	}
 	
 	//Constructor 
-	public Node(int data) {
+	public Node(type data) {
 		this.data = data;
 		}
 }

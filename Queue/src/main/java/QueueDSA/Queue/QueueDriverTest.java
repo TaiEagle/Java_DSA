@@ -4,6 +4,7 @@ public class QueueDriverTest {
 
 
 	public static void main(String[] args) {
+		/*
 		Queue queue = new Queue();
 
 		queue.push(5);
@@ -26,6 +27,7 @@ public class QueueDriverTest {
 		System.out.println(queue.pop());
 		System.out.println();
 		queue.printAll();
+		*/
 	}
 
 	
