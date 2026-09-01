@@ -1,10 +1,10 @@
 package StackDSA.Stack;
 
-public class Node {
+public class Node<type>{
 
-	Integer data =  null;
-	Node NextNode = null;
-	Node lastNode = null;
+	type data =  null;
+	Node<?> NextNode = null;
+	Node<?> lastNode = null;
 	
 	//Default constructor 
 	Node(){
@@ -13,7 +13,7 @@ public class Node {
 	
 	//Constructor 
 	//Parameter 1: int ---data
-	Node(int data){
+	Node(type data){
 		this.data = data;
 	}
 	

@@ -5,9 +5,9 @@
  * */
 package LinkedList.Java;
 
-public class Node {
-	Node NextNode = null;
-	int data;
+public class Node<type> {
+	Node<?> NextNode = null;
+	type data;
 	
 	//Default Constructor
 	public Node() {
@@ -17,7 +17,7 @@ public class Node {
 	
 	
 	//Constructor
-	public Node( int data) {
+	public Node( type data) {
 		
 		this.data = data;
 	}

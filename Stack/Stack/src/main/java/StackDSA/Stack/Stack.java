@@ -1,28 +1,29 @@
 package StackDSA.Stack;
 
-public class Stack {
+public class Stack<type> {
 	//first node
-	Node headNode = null;
+	Node<?> headNode = null;
 	//last node
-	Node tailNode = null;
+	Node<?> tailNode = null;
 	
 	
 	//Constructor
 	Stack(){
 		
 		
-		Node dummyNode = new Node();
+		Node<type> dummyNode = new Node<>();
 		headNode = dummyNode;
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	/*This method adds something to the end of the list 
 	 * Parameter 1: int ---data 
 	 * This method returns nothing
 	 * */
-	void push(int data) {
+	void push(type data) {
 		//create new node 
-		Node newNode = new Node(data);
+		Node<type> newNode = new Node<>(data);
 		
 		
 		//if the linked list is empty 
@@ -42,6 +43,7 @@ public class Stack {
 	
 	
 	
+	@SuppressWarnings("unchecked")
 	/*This method removes a node from the end of the list
 	 * 
 	 * This method returns nothing
@@ -56,15 +58,16 @@ public class Stack {
 	
 	
 	
+	@SuppressWarnings("unchecked")
 	/*This method returns the data in last node 
 	 * This method returns the data inside the last node 
 	 * 
 	 * */
-	int peek() {
+	type peek() {
 		if(tailNode.data != null) {
-			return tailNode.data;
+			return (type) tailNode.data;
 		}
-		return -1;
+		return null;
 	}
 	
 }

@@ -1,38 +1,48 @@
 package StackDSA.Stack;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+//import org.junit.jupiter.api.Test
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test for simple App.
  */
 public class AppTest 
-    extends TestCase
+   
 {
     /**
-     * Create the test case
+     * This tests the stack DS with the Int type
      *
-     * @param testName name of the test case
+     * 
      */
-    public AppTest( String testName )
+	//@Test
+    void intStackTest(  )
     {
-        super( testName );
+    	
+    	Stack<Integer> stack = new Stack<>();
+    	
+    	stack.push(5);
+    	stack.push(9);
+    	stack.push(0);
+    	int lastNode = stack.peek();
+    	int correctVal = 0;
+    	
+    	//assertTrue(lastNode == correctVal);
+    	
+    	
+    	
+       
     }
 
-    /**
-     * @return the suite of tests being tested
+    /**This tests the stack DS with the String type 
+     * 
      */
-    public static Test suite()
+    public void stringStackTest()
     {
-        return new TestSuite( AppTest.class );
+        
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+ 
+   
 }

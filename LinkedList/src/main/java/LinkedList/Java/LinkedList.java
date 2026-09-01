@@ -6,26 +6,31 @@
 
 
 
+//TODO:: it works only with primitive number types. The search functions use the == comparison which is not compatible with the String type
+//or custom objects.
+
+
+
 package LinkedList.Java;
 
-public class LinkedList {
+public class LinkedList<type> {
 	//head is a dummy node
-	Node head = null;
-	Node tail = null;
+	Node<type> head = null;
+	Node<type> tail = null;
 	
 	
 	//constructor
 	public LinkedList() {
-		head = new Node();
+		head = new Node<>();
 	}
 	
 	
 	/*This method adds a node to the end of the linked list 
-	 * Parameter 1: int 
+	 * Parameter 1: generic type --- data to add
 	 * Returns nothing
 	 * */
-	public void add(int data) {
-		Node listItem = new Node(data);
+	public void add(type data) {
+		Node<type> listItem = new Node<>(data);
 		//if the list is empty
 		if(this.tail == null) {
 			this.head.NextNode = listItem;
@@ -41,15 +46,17 @@ public class LinkedList {
 	
 	
 	/*This method searches the Linked List and returns the Node object
-	 * Parameter 1: data ---int
+	 * Parameter 1: generic type --- data to search for 
 	 * This method returns a Node object that comes before the desired Node
 	 * **/
-	public Node search(int data) {
+	@SuppressWarnings("unchecked")
+	public Node<type> search(type data) {
 		//empty node to return outside of conditionals 
-		Node node = null;
+		Node<type> node = null;
 		
-		Node currNode = head.NextNode;
-		Node firstNode = currNode;
+		@SuppressWarnings("unchecked")
+		Node<?> currNode = (Node<type>) head.NextNode;
+		Node<?> firstNode = currNode;
 		//If the list is empty
 		if(currNode == null) {
 			return null;
@@ -58,14 +65,14 @@ public class LinkedList {
 			while(currNode != null) {
 				//check if Node equals the parameter 
 				if(currNode.data == data) {
-					return currNode;
+					return (Node<type>) currNode;
 					//return firstNode;
 					
 				}
 				//if it is not the node, set it to the next node
 				else {
 					firstNode = currNode;
-					currNode = currNode.NextNode;
+					currNode = (Node<type>) currNode.NextNode;
 					
 				}
 			}
@@ -83,12 +90,14 @@ public class LinkedList {
 	
 	
 //This method searches for the node to remove
-//Parameter 1: data --- int
+//Parameter 1: generic type --- data to search for
 //This method returns a node
-	public Node removeSearch(int data) {
+	@SuppressWarnings("unchecked")
+	public Node<type> removeSearch(type data) {
 		//start at the head dummy node
-		Node currNode = this.head.NextNode;
-		Node prevNode = this.head;
+		@SuppressWarnings("unchecked")
+		Node<type> currNode = (Node<type>) this.head.NextNode;
+		Node<type> prevNode = this.head;
 		//if the next node is empty return null
 		while(currNode != null) {
 			//if the next node is a match
@@ -96,8 +105,8 @@ public class LinkedList {
 				return prevNode;
 			}
 			else {
-				currNode = currNode.NextNode;
-				prevNode = prevNode.NextNode;
+				currNode = (Node<type>) currNode.NextNode;
+				prevNode = (Node<type>) prevNode.NextNode;
 			}
 		}
 		
@@ -108,10 +117,11 @@ public class LinkedList {
 	
 	
 //This method removes a item from the list
-//Parameter 1: data --- int
+//Parameter 1: generic type  --- data to remove
 //This method returns nothing
-	public void remove(int data) {
-		Node removeNode = removeSearch(data);
+	@SuppressWarnings("unchecked")
+	public void remove(type data) {
+		Node<type> removeNode = removeSearch(data);
 		//if the list does not contain the desired element
 		if(removeNode == null) {
 			return;
@@ -148,7 +158,8 @@ public class LinkedList {
 	 * */
 	public void printList() {
 		//get the head node
-		Node currNode = this.head.NextNode;
+		
+		Node<?> currNode =  this.head.NextNode;
 		
 		
 		//iterate over list
@@ -167,17 +178,22 @@ public class LinkedList {
 	
 	
 	//This method inserts a new Node object in between two specified nodes 
-	public void insert(int firstNodeData, int secondNodeData, int newNodeData) {
+	//Parameter 1: generic type --- node to insert new node behind 
+	//Parameter 2: generic type --- node to insert new node in front of 
+	//Returns nothing
+	@SuppressWarnings("unchecked")
+	public void insert(type firstNodeData, type secondNodeData, type newNodeData) {
 		//first node object
-		Node firstNode = search(firstNodeData);
+		Node<?> firstNode = search(firstNodeData);
 		//second node object
-		Node secondNode = search(secondNodeData);
+		Node<?> secondNode = search(secondNodeData);
 		
 		
 		//if they are subsequent nodes conduct the insert 
 		if(firstNode.NextNode == secondNode) {
 			//create new node object 
-			Node newNode = new Node(newNodeData);
+			@SuppressWarnings("unchecked")
+			Node<?> newNode = new Node(newNodeData);
 			
 			firstNode.NextNode = newNode;
 			newNode.NextNode = secondNode;
