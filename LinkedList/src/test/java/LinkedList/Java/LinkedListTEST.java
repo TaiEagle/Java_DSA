@@ -1,16 +1,16 @@
 package LinkedList.Java;
 
-import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest {
+class LinkedListTEST {
 
+
+
+	
     /**
      * This test the Int type for the linked list 
      */
@@ -37,6 +37,39 @@ public class AppTest {
 		testArray.add(3);
 		
 		//assertEquals(testArray, )
+		Node<?> currNode = list.head.NextNode;
+		
+		for(Integer item: testArray) {
+			assertEquals(item, currNode.data);
+			System.out.println("item: " + item + " itemData: " + currNode.data);
+			currNode = currNode.NextNode;
+			
+			
+			
+		}
 		
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

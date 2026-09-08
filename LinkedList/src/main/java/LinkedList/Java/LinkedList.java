@@ -101,7 +101,7 @@ public class LinkedList<type> {
 		//if the next node is empty return null
 		while(currNode != null) {
 			//if the next node is a match
-			if(currNode.data == data) {
+			if(currNode.data.equals(data)) {
 				return prevNode;
 			}
 			else {
