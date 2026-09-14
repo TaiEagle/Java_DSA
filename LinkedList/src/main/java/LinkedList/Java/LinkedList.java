@@ -64,7 +64,7 @@ public class LinkedList<type> {
 		else{
 			while(currNode != null) {
 				//check if Node equals the parameter 
-				if(currNode.data == data) {
+				if(currNode.data.equals(data)) {
 					return (Node<type>) currNode;
 					//return firstNode;
 					
@@ -183,25 +183,40 @@ public class LinkedList<type> {
 	//Returns nothing
 	@SuppressWarnings("unchecked")
 	public void insert(type firstNodeData, type secondNodeData, type newNodeData) {
+		
+		Node<?> firstNode = null;
+		Node<?> secondNode = null;
+		
+		//if there is a null ptr exception return// don't insert 
+		try {
 		//first node object
-		Node<?> firstNode = search(firstNodeData);
+		firstNode = search(firstNodeData);
 		//second node object
-		Node<?> secondNode = search(secondNodeData);
+		secondNode = search(secondNodeData);
 		
-		
+		}
+		catch(Exception e) {
+			
+			return;
+		}
+		if((firstNode != null && secondNode != null)){
+			System.out.println("insert");
 		//if they are subsequent nodes conduct the insert 
-		if(firstNode.NextNode == secondNode) {
-			//create new node object 
-			@SuppressWarnings("unchecked")
-			Node<?> newNode = new Node(newNodeData);
-			
-			firstNode.NextNode = newNode;
-			newNode.NextNode = secondNode;
-			
+			if( firstNode.NextNode.equals(secondNode)) {
+				//create new node object 
+				@SuppressWarnings("unchecked")
+				Node<?> newNode = new Node(newNodeData);
+				
+				firstNode.NextNode = newNode;
+				newNode.NextNode = secondNode;
+				
+			}
 		}
 		//else do nothing
 		else {
+			
 			return;
+			
 		}
 		
 		
