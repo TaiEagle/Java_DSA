@@ -226,6 +226,81 @@ public class LinkedList<type> {
 	
 	
 	
+	/*
+	 * This method sorts the linked list 
+	 * 
+	 */
+	
+	void sort() {
+		
+	}
+	
+	
+	/*
+	 * This method finds the middle of two items 
+	 */
+	void findMiddle(Node<?> left, Node<?> right) {
+		
+		Node<?> middleNode;
+		Node<?> currNode = left;
+		
+		int count = 0; 
+		while(!currNode.equals(right)) {
+			//increment 
+			count++;
+			currNode = currNode.NextNode;
+		}
+		count++;
+		
+		//return node object that is in between the two nodes
+		int middleIndex = count / 2;
+		
+		middleNode = left;
+		for(int i = 0; i < middleIndex; i++) {
+			middleNode = middleNode.NextNode;
+		}
+	}
+	
+	
+	/*
+	 * merge sort implementation 
+	 */
+	void mergSort(Node<?> left, Node<?> right) {
+		// check if it is the base case 
+		//if the left and right does not equal each other 
+		if(!left.equals(right)) {
+			
+			
+		}
+	}
+	
+	
+	/*
+	 * merge method for merge sort
+	 */
+	void merg(Node<?> left, Node<?> right, Node<?> middle) {
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
 
